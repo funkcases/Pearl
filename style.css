@@ -7,7 +7,7 @@
     --text-light: #FFFFFF;
     --shadow-light: rgba(0, 0, 0, 0.08);
     --shadow-medium: rgba(0, 0, 0, 0.15);
-    --transition-speed: 0.3s ease-out; /* Slightly faster transitions for snappier feel */
+    --transition-speed: 0.3s ease-out;
 }
 
 body {
@@ -24,22 +24,40 @@ body {
 /* Header Styling */
 header {
     background-color: var(--secondary-pink);
-    padding: 20px 0; /* Slightly less padding */
+    padding: 20px 0;
     text-align: center;
-    box-shadow: 0 3px 8px var(--shadow-medium); /* Slightly softer shadow */
+    box-shadow: 0 3px 8px var(--shadow-medium);
     position: relative;
     z-index: 10;
 }
 
-header h1 { /* No need for #site-title ID, just target h1 within header */
+header h1 {
     font-family: 'Cinzel', serif;
     color: var(--text-light);
     margin: 0;
-    font-size: 3.5em; /* Slightly smaller for less dominance */
-    letter-spacing: 4px; /* Slightly less spacing */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Softer text shadow */
-    /* No initial opacity or transform, it appears instantly */
+    font-size: 3.5em;
+    letter-spacing: 4px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase; /* Ensure it's always uppercase */
 }
+
+header nav {
+    margin-top: 10px;
+}
+
+header .nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 15px;
+    font-size: 1.1em;
+    transition: color var(--transition-speed);
+}
+
+header .nav-link:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
 
 /* Main Content Area */
 main {
@@ -47,100 +65,182 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px; /* Reduced padding */
-    gap: 30px; /* Reduced space between sections */
+    padding: 20px 0; /* Adjusted padding for full width sections */
+    gap: 50px; /* More space between main sections */
 }
 
 /* Introduction Section */
 .intro-section {
     text-align: center;
-    max-width: 700px; /* Narrower for less text across */
-    padding: 15px; /* Reduced padding */
+    max-width: 800px; /* Wider for slightly more text */
+    padding: 0 20px; /* Horizontal padding for smaller screens */
 }
 
 .captivating-text {
     font-family: 'Dancing Script', cursive;
-    font-size: 2.2em; /* Slightly smaller */
+    font-size: 2.5em; /* Slightly larger */
     color: var(--text-dark);
-    line-height: 1.4; /* Slightly tighter line height */
+    line-height: 1.4;
     font-weight: 700;
-    text-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.05); /* Softer shadow */
-    /* No initial opacity or transform, it appears instantly */
+    text-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.05);
+    margin-bottom: 15px;
 }
 
-/* Product Section */
-.product-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px; /* Reduced gap */
-    background-color: rgba(255, 255, 255, 0.95); /* Less transparent for cleaner look */
-    padding: 40px; /* Reduced padding */
-    border-radius: 15px; /* Slightly less rounded */
-    box-shadow: 0 8px 25px var(--shadow-medium); /* Slightly softer shadow */
-    max-width: 900px; /* Slightly narrower */
-    width: 90%;
-    position: relative;
-}
-
-.product-description {
-    text-align: center;
-    /* No initial opacity or transform, it appears instantly */
-}
-
-.product-description h2 { /* Targeting h2 specifically instead of a generic class */
-    font-family: 'Dancing Script', cursive;
-    font-size: 2.5em; /* Adjusted size */
-    color: var(--secondary-pink);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1); /* Softer shadow */
-    margin-bottom: 20px; /* Reduced margin */
-    letter-spacing: 0.5px; /* Slightly less spacing */
-}
-
-.product-description p {
-    font-size: 1.1em; /* Clearer body text */
+.intro-description {
+    font-size: 1.1em;
     line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-.product-display {
+/* Collection Overview Section */
+.collection-overview {
+    text-align: center;
+    max-width: 900px;
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.5); /* Subtle separator */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    width: 90%;
+}
+
+.collection-overview h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8em;
+    color: var(--secondary-pink);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+}
+
+.collection-overview p {
+    font-size: 1.2em;
+    color: var(--text-dark);
+}
+
+/* Products Grid Section */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Space between product cards */
+    max-width: 1200px; /* Max width for the grid */
+    width: 95%; /* Adjust width for smaller screens */
+    padding: 20px;
+    justify-content: center; /* Center items in grid */
+    align-items: start; /* Align items to the top */
+}
+
+.loading-message, .error-message, .no-products {
+    grid-column: 1 / -1; /* Make messages span full width */
+    text-align: center;
+    font-size: 1.3em;
+    color: var(--text-dark);
+    padding: 20px;
+}
+
+/* Product Card Styling */
+.product-card {
+    background-color: rgba(255, 255, 255, 0.98);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px var(--shadow-medium);
+    padding: 20px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px; /* Reduced gap */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 400px; /* Ensure consistent height for cards */
 }
 
-.product-image {
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.product-card-image {
     max-width: 100%;
-    height: auto;
-    border-radius: 10px; /* Slightly less rounded */
-    box-shadow: 0 6px 15px var(--shadow-light); /* Softer shadow */
-    transition: transform var(--transition-speed);
-    /* No initial opacity or transform, it appears instantly */
+    height: 200px; /* Fixed height for images to keep cards uniform */
+    object-fit: contain; /* Ensures the whole image is visible */
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px var(--shadow-light);
 }
 
-.product-image:hover {
-    transform: scale(1.03); /* Subtle scale, no rotate for simplicity */
+.product-card-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4em;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    flex-grow: 1; /* Allows title to take available space */
 }
 
-/* Luxury Bubble Button */
+.product-card-price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--secondary-pink);
+    margin-bottom: 15px;
+}
+
+.product-card-button {
+    display: inline-block;
+    background-color: var(--secondary-pink);
+    color: var(--text-light);
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.product-card-button:hover {
+    background-color: #FF1493; /* Darker pink on hover */
+    transform: translateY(-2px);
+}
+
+
+/* Call to Action Section (at the bottom) */
+.call-to-action-section {
+    text-align: center;
+    max-width: 900px;
+    padding: 40px 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-medium);
+    margin-top: 50px; /* Space from products grid */
+    width: 90%;
+}
+
+.call-to-action-section h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2em;
+    color: var(--secondary-pink);
+    margin-bottom: 15px;
+}
+
+.call-to-action-section p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+/* Luxury Bubble Button (re-used for CTA) */
 .luxury-bubble-button {
     display: inline-block;
     background: linear-gradient(145deg, var(--secondary-pink), #FF1493);
     color: var(--text-light);
-    padding: 15px 30px; /* Reduced padding */
-    border-radius: 50px; /* Softer bubble shape */
+    padding: 15px 30px;
+    border-radius: 50px;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
-    font-size: 1.5em; /* Slightly smaller text */
+    font-size: 1.5em;
     font-weight: 600;
-    letter-spacing: 1.5px; /* Slightly less spacing */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Softer shadow */
+    letter-spacing: 1.5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     transition: all var(--transition-speed);
     position: relative;
     overflow: hidden;
     z-index: 1;
-    /* Removed initial pulse animation */
 }
 
 .luxury-bubble-button span {
@@ -155,23 +255,23 @@ main {
     left: 50%;
     width: 0;
     height: 0;
-    background: rgba(255, 255, 255, 0.3); /* Softer bubble effect */
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    transition: width 0.4s ease, height 0.4s ease; /* Slightly faster transition */
+    transition: width 0.4s ease, height 0.4s ease;
     z-index: 1;
     opacity: 0;
 }
 
 .luxury-bubble-button:hover::before {
-    width: 200%; /* Slightly smaller expansion */
+    width: 200%;
     height: 200%;
     opacity: 1;
 }
 
 .luxury-bubble-button:hover {
-    transform: translateY(-3px) scale(1.01); /* Softer lift and scale */
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35); /* Softer shadow on hover */
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
 }
 
 /* Footer Styling */
@@ -179,66 +279,87 @@ footer {
     background-color: var(--secondary-pink);
     color: var(--text-light);
     text-align: center;
-    padding: 15px 0; /* Reduced padding */
+    padding: 15px 0;
     margin-top: auto;
-    font-size: 0.9em; /* Slightly smaller font */
-    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1); /* Softer shadow */
-}
-
-/* --- ANIMATIONS (Removed initial entry animations for simplicity) --- */
-/* Keeping @keyframes definitions but removing their application on page load */
-/* This means content will be visible immediately, without staggered fades/slides */
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes fadeInScale {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); }
-    50% { transform: scale(1.03); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); }
-    100% { transform: scale(1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); }
+    font-size: 0.9em;
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
 }
 
 
 /* --- Responsive Design --- */
+@media (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+}
+
 @media (max-width: 768px) {
     header h1 {
         font-size: 2.8em;
         letter-spacing: 2px;
     }
 
-    .captivating-text {
-        font-size: 1.6em;
+    header nav .nav-link {
+        margin: 0 10px;
+        font-size: 1em;
     }
 
-    .product-description h2 {
+    .captivating-text {
         font-size: 2em;
+    }
+
+    .intro-description {
+        font-size: 1em;
+    }
+
+    .collection-overview h2 {
+        font-size: 2.2em;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .product-card {
+        padding: 15px;
+        min-height: 380px;
+    }
+
+    .product-card-image {
+        height: 180px;
+    }
+
+    .product-card-title {
+        font-size: 1.2em;
+    }
+
+    .product-card-price {
+        font-size: 1.1em;
+    }
+
+    .product-card-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .call-to-action-section {
+        padding: 30px 15px;
+    }
+
+    .call-to-action-section h3 {
+        font-size: 1.8em;
+    }
+
+    .call-to-action-section p {
+        font-size: 1em;
     }
 
     .luxury-bubble-button {
         padding: 12px 25px;
         font-size: 1.2em;
-    }
-
-    .product-section {
-        padding: 25px;
-        gap: 25px;
     }
 }
 
@@ -248,12 +369,47 @@ footer {
         letter-spacing: 1px;
     }
 
-    .captivating-text {
-        font-size: 1.3em;
+    header nav {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    header nav .nav-link {
+        font-size: 0.9em;
     }
 
-    .product-description h2 {
-        font-size: 1.7em;
+    .captivating-text {
+        font-size: 1.6em;
+    }
+
+    .intro-description {
+        font-size: 0.9em;
+    }
+
+    .collection-overview h2 {
+        font-size: 1.8em;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .product-card {
+        min-height: auto; /* Allow height to adjust */
+    }
+
+    .product-card-image {
+        height: 150px;
+    }
+
+    .product-card-title {
+        font-size: 1.1em;
+    }
+
+    .product-card-price {
+        font-size: 1em;
     }
 
     .luxury-bubble-button {
@@ -261,8 +417,15 @@ footer {
         font-size: 1em;
     }
 
-    .product-section {
-        padding: 15px;
-        gap: 15px;
+    .call-to-action-section {
+        padding: 20px 10px;
+    }
+
+    .call-to-action-section h3 {
+        font-size: 1.5em;
+    }
+
+    .call-to-action-section p {
+        font-size: 0.9em;
     }
 }
