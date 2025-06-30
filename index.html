@@ -3,35 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pearl Cases - Luxury Phone Adornment</title>
+    <title>Luxury Product Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1 class="fade-in">Pearl Cases</h1>
+        <h1 id="site-title">LUXURY LINE</h1>
     </header>
 
     <main>
         <section class="intro-section">
-            <p class="captivating-text slide-up">Unleash your inner sparkle. Your phone deserves to be cherished, adored, and utterly fabulous. Welcome to a world where protection meets unparalleled style.</p>
+            <p class="captivating-text" id="intro-paragraph">
+                Indulge in unparalleled elegance and discover the essence of true sophistication.
+                Every detail is crafted to perfection, designed for the modern connoisseur.
+            </p>
         </section>
 
         <section class="product-section">
-            <div class="product-description scale-in">
-                <p class="baddie-font">Warning: May cause extreme levels of phone adoration.</p>
+            <div class="product-description" id="product-description">
+                <h2 class="baddie-font">Unveil Your Inner Radiance</h2>
+                <p>
+                    Experience the ultimate blend of luxury and innovation with our exquisite new collection.
+                    Designed to captivate and empower, each piece is a masterpiece of timeless beauty.
+                </p>
             </div>
             <div class="product-display">
-                <img src="image.png" alt="Pearl Cases - Spoiled Phone Case" class="product-image fade-in-delay">
-                <a href="https://pearlcases.printify.me" target="_blank" class="luxury-bubble-button pulse">
-                    <span>Shop Now & Get Spoiled!</span>
-                </a>
+                <img src="https://via.placeholder.com/600x400/FF69B4/FFFFFF?text=Exquisite+Product" alt="Exquisite Luxury Product" class="product-image" id="product-image">
+                <a href="#" class="luxury-bubble-button" id="buy-now-button"><span>Explore Collection</span></a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Pearl Cases. All rights reserved.</p>
+        <p>&copy; 2025 Luxury Line. All rights reserved.</p>
     </footer>
+
+    <script>
+        // JavaScript to add animation classes on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('site-title').classList.add('fade-in');
+            document.getElementById('intro-paragraph').classList.add('slide-up');
+            document.getElementById('product-description').classList.add('scale-in');
+            document.getElementById('product-image').classList.add('fade-in-delay');
+            document.getElementById('buy-now-button').classList.add('pulse');
+        });
+    </script>
 </body>
 </html>
