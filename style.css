@@ -1,189 +1,314 @@
+/* General Body & Root Styles */
+:root {
+    --primary-pink: #FFC0CB; /* Light Pink - almost white with a hint of pink */
+    --secondary-pink: #FF69B4; /* Hot Pink - for accents */
+    --tertiary-pink: #E0BBE4; /* A slightly softer, sophisticated pink */
+    --text-dark: #333333;
+    --text-light: #FFFFFF;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --transition-speed: 0.5s ease-out;
+}
+
 body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif; /* Clean but girly base font */
-    background-color: #ffe6f0; /* Light pink background */
-    color: #333;
+    font-family: 'Poppins', sans-serif; /* Clean, modern, and versatile */
+    background: linear-gradient(135deg, var(--primary-pink), var(--tertiary-pink)); /* Gentle pink gradient */
+    color: var(--text-dark);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
 }
 
+/* Header Styling */
 header {
-    background-color: #ff99cc; /* Medium pink header */
-    padding: 20px 0;
+    background-color: var(--secondary-pink); /* Hot Pink header for impact */
+    padding: 25px 0;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px var(--shadow-medium);
+    position: relative;
+    z-index: 10;
 }
 
 header h1 {
-    font-family: 'Playfair Display', serif; /* Elegant, clean font for the title */
-    color: #fff;
+    font-family: 'Cinzel', serif; /* Elegant and luxurious serif font */
+    color: var(--text-light);
     margin: 0;
-    font-size: 3em;
-    letter-spacing: 2px;
+    font-size: 4em; /* Larger for impact */
+    letter-spacing: 5px; /* Spacing for luxury feel */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    /* Initial state for fade-in animation (handled by JS adding .fade-in) */
+    opacity: 0;
+    transform: translateY(-20px);
 }
 
+/* Main Content Area */
 main {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 30px;
+    gap: 40px; /* Space between sections */
+}
+
+/* Introduction Section */
+.intro-section {
+    text-align: center;
+    max-width: 900px;
     padding: 20px;
 }
 
-.intro-section {
-    text-align: center;
-    margin-bottom: 40px;
-    max-width: 800px;
-}
-
 .captivating-text {
-    font-family: 'Playfair Display', serif; /* Elegant font for captivating intro */
-    font-size: 1.8em;
-    color: #d6338a; /* A deeper, richer pink */
-    line-height: 1.6;
+    font-family: 'Dancing Script', cursive; /* Elegant, flowing script for captivating intro */
+    font-size: 2.5em; /* Larger and more inviting */
+    color: var(--text-dark);
+    line-height: 1.5;
     font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
+    /* Initial state for slide-up animation (handled by JS adding .slide-up) */
+    opacity: 0;
+    transform: translateY(30px);
 }
 
+/* Product Section */
 .product-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
-    background-color: #fff0f5; /* Very light pink/off-white for product section background */
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
-    width: 100%;
+    gap: 40px;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for a clean, premium look */
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-medium);
+    max-width: 1000px;
+    width: 90%;
+    position: relative; /* Needed for any absolute positioning within */
 }
 
 .product-description {
     text-align: center;
+    /* Initial state for scale-in animation (handled by JS adding .scale-in) */
+    opacity: 0;
+    transform: scale(0.8);
 }
 
 .baddie-font {
-    font-family: 'Pacifico', cursive; /* A script font for the "baddie" description */
-    font-size: 2.2em;
-    color: #ff66b2; /* Bright pink for the baddie font */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+    font-family: 'Dancing Script', cursive; /* Using Dancing Script for "baddie" now, but styling it differently */
+    font-size: 3em; /* Larger, more impactful */
+    color: var(--secondary-pink); /* Hot pink for boldness */
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.15); /* Stronger shadow */
+    margin-bottom: 25px;
+    letter-spacing: 1px;
 }
 
 .product-display {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
 }
 
 .product-image {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease-in-out;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px var(--shadow-medium);
+    transition: transform 0.4s ease-in-out;
+    /* Initial state for fade-in-delay animation (handled by JS adding .fade-in-delay) */
+    opacity: 0;
+    transform: scale(0.9);
 }
 
 .product-image:hover {
-    transform: scale(1.03);
+    transform: scale(1.05) rotate(1deg); /* Subtle rotate on hover for extra flair */
 }
 
-.bubble-button {
+/* Luxury Bubble Button - Upper Class */
+.luxury-bubble-button {
     display: inline-block;
-    background: linear-gradient(145deg, #ff99cc, #ff66b2); /* Gradient pink */
-    color: #fff;
-    padding: 18px 35px;
-    border-radius: 50px; /* More rounded for bubble effect */
+    background: linear-gradient(145deg, var(--secondary-pink), #FF1493); /* Deeper, richer pink gradient */
+    color: var(--text-light);
+    padding: 20px 40px;
+    border-radius: 60px; /* More pronounced bubble shape */
     text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5em;
-    font-weight: 700;
-    letter-spacing: 1px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif; /* Clean font for the button text */
+    font-size: 1.8em; /* Larger button text */
+    font-weight: 600;
+    letter-spacing: 2px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Stronger, deeper shadow */
+    transition: all var(--transition-speed);
     position: relative;
     overflow: hidden;
+    z-index: 1; /* Ensure text is above ::before */
+    /* Initial state for pulse animation (handled by JS adding .pulse) */
+    transform: scale(1);
 }
 
-.bubble-button span {
+.luxury-bubble-button span {
     position: relative;
-    z-index: 2;
+    z-index: 2; /* Ensure text is on top of the pseudo-element */
 }
 
-.bubble-button::before {
+.luxury-bubble-button::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     width: 0;
     height: 0;
-    background: rgba(255, 255, 255, 0.3); /* Lighter bubble effect */
+    background: rgba(255, 255, 255, 0.4); /* Brighter, more noticeable bubble effect */
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    transition: width 0.4s ease, height 0.4s ease;
-    z-index: 1;
+    transition: width 0.5s ease, height 0.5s ease;
+    z-index: 1; /* Behind the span */
+    opacity: 0;
 }
 
-.bubble-button:hover::before {
-    width: 200%;
-    height: 200%;
+.luxury-bubble-button:hover::before {
+    width: 250%;
+    height: 250%;
+    opacity: 1;
 }
 
-.bubble-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+.luxury-bubble-button:hover {
+    transform: translateY(-5px) scale(1.02); /* More pronounced lift and slight scale */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* Even deeper shadow on hover */
 }
 
+/* Footer Styling */
 footer {
-    background-color: #ff99cc;
-    color: #fff;
+    background-color: var(--secondary-pink);
+    color: var(--text-light);
     text-align: center;
-    padding: 15px 0;
-    margin-top: auto; /* Pushes footer to the bottom */
-    font-size: 0.9em;
+    padding: 20px 0;
+    margin-top: auto;
+    font-size: 1em;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Design */
+/* --- ANIMATIONS --- */
+
+/* Fade In (for header) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.fade-in {
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+/* Slide Up (for intro text) */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.slide-up {
+    animation: slideUp 1.2s ease-out 0.5s forwards; /* Start after header */
+}
+
+/* Scale In (for product description) */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.scale-in {
+    animation: scaleIn 1s ease-out 1s forwards; /* Start after intro text */
+}
+
+/* Fade In with Delay (for product image) */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.fade-in-delay {
+    animation: fadeInScale 1.2s ease-out 1.5s forwards; /* Start after product description */
+}
+
+/* Pulse (for button) */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); }
+    50% { transform: scale(1.03); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); }
+    100% { transform: scale(1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); }
+}
+.pulse {
+    animation: pulse 2s infinite ease-in-out 2s; /* Start after image, continuous */
+}
+
+
+/* --- Responsive Design --- */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 2.5em;
+        font-size: 3em;
+        letter-spacing: 3px;
     }
 
     .captivating-text {
+        font-size: 1.8em;
+    }
+
+    .baddie-font {
+        font-size: 2.2em;
+    }
+
+    .luxury-bubble-button {
+        padding: 15px 30px;
         font-size: 1.4em;
+    }
+
+    .product-section {
+        padding: 30px;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2.5em;
+        letter-spacing: 2px;
+    }
+
+    .captivating-text {
+        font-size: 1.5em;
     }
 
     .baddie-font {
         font-size: 1.8em;
     }
 
-    .bubble-button {
-        padding: 15px 30px;
+    .luxury-bubble-button {
+        padding: 12px 25px;
         font-size: 1.2em;
     }
 
     .product-section {
-        padding: 25px;
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 2em;
-    }
-
-    .captivating-text {
-        font-size: 1.2em;
-    }
-
-    .baddie-font {
-        font-size: 1.5em;
-    }
-
-    .bubble-button {
-        padding: 12px 25px;
-        font-size: 1em;
+        padding: 20px;
+        gap: 20px;
     }
 }
