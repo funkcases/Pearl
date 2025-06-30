@@ -3,17 +3,21 @@
     --primary-pink: #FFC0CB; /* Light Pink */
     --secondary-pink: #FF69B4; /* Hot Pink */
     --tertiary-pink: #E0BBE4; /* Soft Pink */
+    --tech-purple: #C8A2C8; /* A new, subtle techy purple */
+    --tech-blue: #ADD8E6; /* Light blue for cool accents */
     --text-dark: #333333;
     --text-light: #FFFFFF;
     --shadow-light: rgba(0, 0, 0, 0.08);
     --shadow-medium: rgba(0, 0, 0, 0.15);
     --transition-speed: 0.3s ease-out;
+    --border-glow: 0 0 10px var(--secondary-pink), 0 0 20px var(--tech-purple); /* Subtle glow effect */
 }
 
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, var(--primary-pink), var(--tertiary-pink));
+    /* Updated gradient for techy feel */
+    background: linear-gradient(135deg, var(--primary-pink), var(--tertiary-pink), var(--tech-blue));
     color: var(--text-dark);
     display: flex;
     flex-direction: column;
@@ -35,27 +39,36 @@ header h1 {
     font-family: 'Cinzel', serif;
     color: var(--text-light);
     margin: 0;
-    font-size: 3.5em;
-    letter-spacing: 4px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    text-transform: uppercase; /* Ensure it's always uppercase */
+    font-size: 3.8em; /* Slightly larger again for impact */
+    letter-spacing: 5px; /* More spacing for elegance + tech feel */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), var(--border-glow); /* Added subtle glow to text */
+    text-transform: uppercase;
+    transition: all var(--transition-speed);
+}
+
+header h1:hover {
+    transform: scale(1.02);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4), 0 0 15px var(--text-light);
 }
 
 header nav {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 header .nav-link {
     color: var(--text-light);
     text-decoration: none;
     font-weight: 600;
-    margin: 0 15px;
-    font-size: 1.1em;
-    transition: color var(--transition-speed);
+    margin: 0 20px;
+    font-size: 1.2em; /* Slightly larger nav links */
+    transition: color var(--transition-speed), text-shadow var(--transition-speed);
+    text-transform: uppercase;
+    font-family: 'Share Tech Mono', monospace; /* Techy font for nav */
 }
 
 header .nav-link:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--tech-blue); /* Changes to tech blue on hover */
+    text-shadow: 0 0 8px var(--text-light);
 }
 
 
@@ -65,138 +78,176 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0; /* Adjusted padding for full width sections */
-    gap: 50px; /* More space between main sections */
+    padding: 30px 0; /* More vertical padding */
+    gap: 60px; /* More space between main sections for longer page feel */
 }
 
 /* Introduction Section */
 .intro-section {
     text-align: center;
-    max-width: 800px; /* Wider for slightly more text */
-    padding: 0 20px; /* Horizontal padding for smaller screens */
+    max-width: 900px;
+    padding: 0 20px;
 }
 
 .captivating-text {
     font-family: 'Dancing Script', cursive;
-    font-size: 2.5em; /* Slightly larger */
-    color: var(--text-dark);
-    line-height: 1.4;
+    font-size: 3em; /* Larger and more prominent */
+    color: var(--secondary-pink); /* Hot pink for the main statement */
+    line-height: 1.3;
     font-weight: 700;
-    text-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.05);
-    margin-bottom: 15px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1), 0 0 10px var(--tertiary-pink); /* Soft glow */
+    margin-bottom: 20px;
 }
 
 .intro-description {
-    font-size: 1.1em;
-    line-height: 1.6;
-    max-width: 600px;
+    font-family: 'Poppins', sans-serif; /* Clean body font */
+    font-size: 1.2em; /* Larger and clearer */
+    line-height: 1.7;
+    max-width: 700px;
     margin: 0 auto;
     padding: 0 15px;
+    color: var(--text-dark);
+}
+
+/* Main Call to Action Section (New) */
+.main-cta-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.main-shop-button {
+    font-size: 2.2em; /* Even larger button for primary CTA */
+    padding: 25px 50px;
+    border-radius: 70px;
 }
 
 /* Collection Overview Section */
 .collection-overview {
     text-align: center;
     max-width: 900px;
-    padding: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.5); /* Subtle separator */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 30px; /* More padding */
+    border-top: 2px dashed var(--tech-purple); /* Dashed, techy separator */
+    border-bottom: 2px dashed var(--tech-purple);
     width: 90%;
+    background-color: rgba(255, 255, 255, 0.7); /* Lighter background */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-light);
 }
 
 .collection-overview h2 {
     font-family: 'Cinzel', serif;
-    font-size: 2.8em;
+    font-size: 3em; /* Larger heading */
     color: var(--secondary-pink);
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-    margin-bottom: 10px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.1), 0 0 8px var(--tech-purple); /* Techy glow */
+    margin-bottom: 15px;
 }
 
 .collection-overview p {
-    font-size: 1.2em;
+    font-size: 1.3em; /* Larger text */
     color: var(--text-dark);
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Products Grid Section */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-    gap: 30px; /* Space between product cards */
-    max-width: 1200px; /* Max width for the grid */
-    width: 95%; /* Adjust width for smaller screens */
-    padding: 20px;
-    justify-content: center; /* Center items in grid */
-    align-items: start; /* Align items to the top */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px; /* More space between cards */
+    max-width: 1200px;
+    width: 95%;
+    padding: 0 20px; /* Added horizontal padding */
+    justify-content: center;
+    align-items: stretch; /* Stretch cards to equal height */
 }
 
 .loading-message, .error-message, .no-products {
-    grid-column: 1 / -1; /* Make messages span full width */
+    grid-column: 1 / -1;
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.5em;
     color: var(--text-dark);
-    padding: 20px;
+    padding: 30px;
+    font-family: 'Share Tech Mono', monospace; /* Techy font for messages */
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--shadow-light);
+}
+
+.error-message-text { /* Specific style for error message */
+    color: #FF0000;
+    font-weight: 700;
 }
 
 /* Product Card Styling */
 .product-card {
-    background-color: rgba(255, 255, 255, 0.98);
-    border-radius: 15px;
-    box-shadow: 0 8px 20px var(--shadow-medium);
-    padding: 20px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(240, 240, 250, 0.98)); /* Subtle gradient for card */
+    border-radius: 20px; /* More rounded */
+    box-shadow: 0 10px 30px var(--shadow-medium);
+    padding: 25px; /* More padding */
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 400px; /* Ensure consistent height for cards */
+    justify-content: space-between; /* Distribute content nicely */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border var(--transition-speed);
+    min-height: 450px; /* Taller cards for more content */
+    border: 2px solid transparent; /* For hover glow */
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    transform: translateY(-8px) rotate(1deg); /* More pronounced lift and subtle rotate */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+    border: 2px solid var(--tech-purple); /* Glow effect on hover */
 }
 
 .product-card-image {
-    max-width: 100%;
-    height: 200px; /* Fixed height for images to keep cards uniform */
-    object-fit: contain; /* Ensures the whole image is visible */
-    border-radius: 10px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 10px var(--shadow-light);
+    max-width: 90%; /* Slightly smaller to give space */
+    height: 220px; /* Taller image */
+    object-fit: contain;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 15px var(--shadow-medium);
+    transition: transform 0.3s ease;
+}
+
+.product-card-image:hover {
+    transform: scale(1.05); /* Zoom effect on image hover */
 }
 
 .product-card-title {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.4em;
-    font-weight: 600;
+    font-size: 1.5em;
+    font-weight: 700;
     color: var(--text-dark);
-    margin-bottom: 10px;
-    flex-grow: 1; /* Allows title to take available space */
+    margin-bottom: 12px;
+    flex-grow: 1;
 }
 
 .product-card-price {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.3em;
+    font-family: 'Share Tech Mono', monospace; /* Techy font for price */
+    font-size: 1.6em; /* Larger price */
     font-weight: 700;
     color: var(--secondary-pink);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px rgba(255,255,255,0.8); /* Subtle white glow */
 }
 
 .product-card-button {
     display: inline-block;
     background-color: var(--secondary-pink);
     color: var(--text-light);
-    padding: 10px 20px;
-    border-radius: 30px;
+    padding: 12px 25px;
+    border-radius: 40px;
     text-decoration: none;
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .product-card-button:hover {
-    background-color: #FF1493; /* Darker pink on hover */
-    transform: translateY(-2px);
+    background-color: #FF1493;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -204,39 +255,43 @@ main {
 .call-to-action-section {
     text-align: center;
     max-width: 900px;
-    padding: 40px 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px var(--shadow-medium);
-    margin-top: 50px; /* Space from products grid */
+    padding: 50px 20px; /* More padding */
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 25px; /* More rounded */
+    box-shadow: 0 12px 35px var(--shadow-medium);
+    margin-top: 60px;
+    margin-bottom: 40px; /* Add margin bottom to separate from footer */
     width: 90%;
+    border: 3px solid var(--tech-purple); /* Techy border */
 }
 
 .call-to-action-section h3 {
     font-family: 'Cinzel', serif;
-    font-size: 2.2em;
+    font-size: 2.5em; /* Larger heading */
     color: var(--secondary-pink);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.1), 0 0 10px var(--tech-blue); /* Blue glow */
 }
 
 .call-to-action-section p {
-    font-size: 1.1em;
-    margin-bottom: 30px;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    line-height: 1.6;
 }
 
-/* Luxury Bubble Button (re-used for CTA) */
+/* Luxury Bubble Button (re-used for CTA, now more defined) */
 .luxury-bubble-button {
     display: inline-block;
     background: linear-gradient(145deg, var(--secondary-pink), #FF1493);
     color: var(--text-light);
-    padding: 15px 30px;
-    border-radius: 50px;
+    padding: 18px 35px; /* Slightly larger default padding */
+    border-radius: 60px;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
-    font-size: 1.5em;
+    font-size: 1.6em; /* Adjusted size */
     font-weight: 600;
-    letter-spacing: 1.5px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    letter-spacing: 2px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     transition: all var(--transition-speed);
     position: relative;
     overflow: hidden;
@@ -255,34 +310,36 @@ main {
     left: 50%;
     width: 0;
     height: 0;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.5); /* Brighter bubble effect */
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    transition: width 0.4s ease, height 0.4s ease;
+    transition: width 0.5s ease, height 0.5s ease;
     z-index: 1;
     opacity: 0;
 }
 
 .luxury-bubble-button:hover::before {
-    width: 200%;
-    height: 200%;
+    width: 250%;
+    height: 250%;
     opacity: 1;
 }
 
 .luxury-bubble-button:hover {
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
+
 
 /* Footer Styling */
 footer {
     background-color: var(--secondary-pink);
     color: var(--text-light);
     text-align: center;
-    padding: 15px 0;
+    padding: 20px 0;
     margin-top: auto;
-    font-size: 0.9em;
-    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Share Tech Mono', monospace; /* Techy footer font */
 }
 
 
@@ -290,7 +347,11 @@ footer {
 @media (max-width: 1024px) {
     .products-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 25px;
+        gap: 30px;
+    }
+    .main-shop-button {
+        font-size: 2em;
+        padding: 20px 40px;
     }
 }
 
@@ -304,62 +365,53 @@ footer {
         margin: 0 10px;
         font-size: 1em;
     }
-
     .captivating-text {
-        font-size: 2em;
+        font-size: 2.5em;
     }
-
     .intro-description {
         font-size: 1em;
     }
-
-    .collection-overview h2 {
-        font-size: 2.2em;
+    .main-shop-button {
+        font-size: 1.8em;
+        padding: 18px 35px;
     }
-
+    .collection-overview h2 {
+        font-size: 2.5em;
+    }
     .products-grid {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
+        gap: 25px;
         padding: 15px;
     }
-
     .product-card {
-        padding: 15px;
-        min-height: 380px;
+        padding: 20px;
+        min-height: 420px;
     }
-
     .product-card-image {
         height: 180px;
     }
-
     .product-card-title {
-        font-size: 1.2em;
+        font-size: 1.3em;
     }
-
     .product-card-price {
-        font-size: 1.1em;
+        font-size: 1.4em;
     }
-
     .product-card-button {
-        padding: 8px 15px;
-        font-size: 0.9em;
-    }
-
-    .call-to-action-section {
-        padding: 30px 15px;
-    }
-
-    .call-to-action-section h3 {
-        font-size: 1.8em;
-    }
-
-    .call-to-action-section p {
+        padding: 10px 20px;
         font-size: 1em;
     }
-
+    .call-to-action-section {
+        padding: 40px 15px;
+    }
+    .call-to-action-section h3 {
+        font-size: 2em;
+    }
+    .call-to-action-section p {
+        font-size: 1.1em;
+    }
     .luxury-bubble-button {
-        padding: 12px 25px;
-        font-size: 1.2em;
+        padding: 15px 30px;
+        font-size: 1.4em;
     }
 }
 
@@ -368,64 +420,55 @@ footer {
         font-size: 2.2em;
         letter-spacing: 1px;
     }
-
     header nav {
-        display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 8px;
     }
     header nav .nav-link {
         font-size: 0.9em;
     }
-
     .captivating-text {
-        font-size: 1.6em;
+        font-size: 2em;
     }
-
     .intro-description {
         font-size: 0.9em;
     }
-
-    .collection-overview h2 {
-        font-size: 1.8em;
+    .main-shop-button {
+        font-size: 1.5em;
+        padding: 15px 30px;
     }
-
+    .collection-overview h2 {
+        font-size: 2em;
+    }
     .products-grid {
-        grid-template-columns: 1fr; /* Single column on very small screens */
-        gap: 15px;
+        grid-template-columns: 1fr;
+        gap: 20px;
         padding: 10px;
     }
-
     .product-card {
-        min-height: auto; /* Allow height to adjust */
+        min-height: auto;
+        padding: 15px;
     }
-
     .product-card-image {
         height: 150px;
     }
-
     .product-card-title {
-        font-size: 1.1em;
+        font-size: 1.2em;
     }
-
     .product-card-price {
-        font-size: 1em;
+        font-size: 1.3em;
     }
-
     .luxury-bubble-button {
-        padding: 10px 20px;
-        font-size: 1em;
+        padding: 12px 25px;
+        font-size: 1.2em;
     }
-
     .call-to-action-section {
-        padding: 20px 10px;
+        padding: 30px 10px;
     }
-
     .call-to-action-section h3 {
-        font-size: 1.5em;
+        font-size: 1.8em;
     }
-
     .call-to-action-section p {
-        font-size: 0.9em;
+        font-size: 1em;
     }
 }
