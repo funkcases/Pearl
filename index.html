@@ -3,27 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PearlCases - Your Exquisite Collection</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>PearlCases - Girly Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>PEARL CASES</h1>
         <nav>
-            <a href="#products-container" class="nav-link">Shop All</a>
-            <a href="https://pearlcases.printify.me" target="_blank" class="nav-link">Visit Printify Store</a>
-        </nav>
+            <a href="https://pearlcases.printify.me" target="_blank" class="nav-link">Shop All Cases</a>
+            </nav>
     </header>
 
     <main>
         <section class="intro-section">
             <p class="captivating-text">
-                Discover elegance, redefined.
+                Your device, reimagined.
             </p>
             <p class="intro-description">
-                Explore our meticulously crafted collection designed to protect and beautify your devices with a touch of luxury.
+                Where elegance meets innovation. Discover stunning protection for your tech.
             </p>
+        </section>
+
+        <section class="main-cta-section">
+            <a href="https://pearlcases.printify.me" target="_blank" class="luxury-bubble-button main-shop-button"><span>Shop Our Latest</span></a>
         </section>
 
         <section class="collection-overview">
@@ -37,8 +40,8 @@
         </section>
 
         <section class="call-to-action-section">
-            <h3>Ready to find your perfect case?</h3>
-            <p>Browse our full range and customize your ideal PearlCase today.</p>
+            <h3>Find your perfect match.</h3>
+            <p>Ready to explore more? Click below to view our complete range on Printify.</p>
             <a href="https://pearlcases.printify.me" target="_blank" class="luxury-bubble-button"><span>View All on Printify</span></a>
         </section>
 
@@ -60,20 +63,20 @@
         async function fetchPrintifyProducts() {
             loadingMessage.style.display = 'block';
             errorMessage.style.display = 'none';
-            productsContainer.innerHTML = ''; // Clear previous content
+            productsContainer.innerHTML = ''; // Clear previous content, show loading
 
-            // Replace with your actual Printify Shop ID and a SECURELY stored API Key.
-            // THIS IS PSEUDO-CODE FOR A CLIENT-SIDE IMPLEMENTATION.
-            // DO NOT USE YOUR REAL API KEY DIRECTLY HERE IN PRODUCTION.
-            const PRINTIFY_SHOP_ID = 'YOUR_PRINTIFY_SHOP_ID'; // Find this in your Printify account settings
-            const PRINTIFY_API_KEY = 'YOUR_PRINTIFY_API_KEY'; // This should be on your backend for security!
+            // --- IMPORTANT: Replace with your actual Printify Shop ID and a SECURELY fetched API Key ---
+            // For live deployment, you MUST use a backend server to proxy this request
+            // to protect your API key. This is for local testing ONLY.
+            const PRINTIFY_SHOP_ID = 'YOUR_PRINTIFY_SHOP_ID'; // <--- REPLACE THIS
+            const PRINTIFY_API_KEY = 'YOUR_PRINTIFY_API_KEY'; // <--- REPLACE THIS (and move to backend!)
 
+            // If you are testing locally and still want to see products, you can
+            // temporarily hardcode a public API key (if Printify offers one) or your own for testing.
+            // But reiterate: NOT FOR PRODUCTION.
             const API_URL = `https://api.printify.com/v1/shops/${PRINTIFY_SHOP_ID}/products.json`;
 
             try {
-                // In a real scenario, this 'fetch' call would go to your backend server,
-                // and your backend server would then call the Printify API.
-                // For demonstration, we'll simulate the call directly.
                 const response = await fetch(API_URL, {
                     method: 'GET',
                     headers: {
@@ -83,7 +86,7 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
                 }
 
                 const data = await response.json();
@@ -95,19 +98,16 @@
                 }
 
                 products.forEach(product => {
-                    // Create a card for each product
                     const productCard = document.createElement('div');
                     productCard.classList.add('product-card');
 
-                    // Get the first image URL (or a placeholder if none)
                     const imageUrl = product.images && product.images.length > 0
                                      ? product.images[0].src
-                                     : 'https://via.placeholder.com/400x400/CCCCCC/666666?text=No+Image';
+                                     : 'https://via.placeholder.com/400x400/CCCCCC/666666?text=PearlCases'; // Fallback for no image
 
-                    // Get the price (Printify API returns prices in cents, convert to dollars/pounds)
                     const retailPrice = product.variants && product.variants.length > 0
                                         ? (product.variants[0].retail_price / 100).toFixed(2)
-                                        : 'N/A'; // Or calculate average/range if multiple variants
+                                        : 'N/A';
 
                     productCard.innerHTML = `
                         <img src="${imageUrl}" alt="${product.title}" class="product-card-image">
@@ -121,13 +121,12 @@
             } catch (error) {
                 console.error('Error fetching products:', error);
                 errorMessage.style.display = 'block';
-                productsContainer.innerHTML = ''; // Clear loading message
+                productsContainer.innerHTML = '<p class="error-message-text">Failed to load products. Please check your Printify Shop ID/API Key or try again later. (Error: ' + error.message + ')</p>';
             } finally {
                 loadingMessage.style.display = 'none';
             }
         }
 
-        // Call the function to fetch products when the page loads
         document.addEventListener('DOMContentLoaded', fetchPrintifyProducts);
     </script>
 </body>
